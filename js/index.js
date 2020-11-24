@@ -25,17 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(monsters => monsters.forEach(monster => buildMonster(monster)))
     }
 
-    function buttons(){
-        const forward = document.getElementById("forward")
-        forward.addEventListener("click", () => getMonsters("next"))
-
-        const back = document.getElementById("back")
-        back.addEventListener("click", ()=> getMonsters("back"))
-    }
-
 
     function buildMonster(monster){
-       
 
         const monsterDiv = document.createElement("div")
 
@@ -53,6 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
         monsterContainer.appendChild(monsterDiv)
     }
 
+    function buildCreateForm(){
+        buildForm()
+        let form = document.getElementById("monster-form")
+        form.addEventListener("submit", (e) => createMonster(e))
+    }
 
     function createMonster(e){
         e.preventDefault()
@@ -78,12 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    function buildCreateForm(){
-        buildForm()
-        let form = document.getElementById("monster-form")
-        form.addEventListener("submit", (e) => createMonster(e))
-    }
-
     function buildForm(){
         const formCointainer = document.getElementById("create-monster")
         
@@ -105,6 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     form.appendChild(submit)
     formCointainer.appendChild(form)
+    }
+
+    function buttons(){
+        const forward = document.getElementById("forward")
+        forward.addEventListener("click", () => getMonsters("next"))
+
+        const back = document.getElementById("back")
+        back.addEventListener("click", ()=> getMonsters("back"))
     }
 
 })
